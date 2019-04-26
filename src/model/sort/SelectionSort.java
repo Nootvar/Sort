@@ -3,19 +3,11 @@ package model;
 public class SelectionSort implements ISortingAlgorithm {
 
     /**
-     * procédure tri_selection(tableau t, entier n)
-     *       pour i de 0 à n - 2
-     *           min ← i
-     *           pour j de i + 1 à n - 1
-     *               si t[j] < t[min], alors min ← j
-     *           fin pour
-     *           si min ≠ i, alors échanger t[i] et t[min]
-     *       fin pour
-     *   fin procédure
+     * Sort the array
      * @param array The array to sort
      */
     @Override
-    public Array sort(Array array) {
+    public IArray sort(IArray array) {
         /* a[0] to a[n-1] is the array to sort */
         int i,j;
         int n = array.length(); // initialise to a's length

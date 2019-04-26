@@ -1,5 +1,5 @@
 package model;
 
 public interface ISortingAlgorithm {
-    Array sort(Array array);
+    IArray sort(IArray array);
 }

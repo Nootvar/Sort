@@ -1,5 +1,8 @@
 package model;
 
+import model.array.Array;
+import model.sort.ISortingAlgorithm;
+import model.sort.SelectionSort;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

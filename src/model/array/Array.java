@@ -1,10 +1,11 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Array {
+public class Array implements IArray {
 
     private int[] array;
     private List<ISortListener> listeners;
@@ -13,10 +14,12 @@ public class Array {
         array = new int[size];
         for (int i = 0; i < size; i++)
             array[i] = i;
+        listeners = new ArrayList<>();
     }
 
     public Array(int[] array) {
         this.array = array;
+        listeners = new ArrayList<>();
     }
 
     public void shuffle() {
@@ -37,7 +40,7 @@ public class Array {
 
     public void set(int i, int value) {
         for (ISortListener listener : listeners)
-            listener.onValueAccessed(array[i]);
+            listener.onValueDisplaced(array[i]);
         array[i] = value;
     }
 
