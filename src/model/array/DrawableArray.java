@@ -1,7 +1,8 @@
-package model;
+package model.array;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import main.Config;
 import view.MainViewController;
 
 public class DrawableArray extends Array {
@@ -38,7 +39,7 @@ public class DrawableArray extends Array {
         rectangles[i] = rectangle;
         view.setRectangle(rectangle);
         try {
-            Thread.sleep(20);
+            Thread.sleep(Config.TIME_WASTE);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -47,10 +48,22 @@ public class DrawableArray extends Array {
     private Rectangle createRectangleAt(int value, int index) {
         Rectangle rectangle = new Rectangle();
         rectangle.setX(rectWidth*index);
-        rectangle.setY(0);
+        rectangle.setY(viewHeight - rectHeight*value);
         rectangle.setWidth(rectWidth);
         rectangle.setHeight(rectHeight*value);
-        rectangle.setFill(Color.rgb(value%255, 50, 50));
+        rectangle.setFill(getColor(value));
         return rectangle;
+    }
+
+    private Color getColor(int value) {
+        if (value <= 255)
+            return Color.rgb(value%255, 50, 50);
+        if (value <= 255*2)
+            return Color.rgb(50, value%255, 50);
+        if (value <= 255*3)
+            return Color.rgb(50, 50, value%255);
+        if (value <= 255*4)
+            return Color.rgb(value%255, 50, value%255);
+        return Color.BLACK;
     }
 }

@@ -1,4 +1,7 @@
-package model;
+package model.array;
+
+import model.ISortListener;
+import model.array.IArray;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,11 +77,33 @@ public class Array implements IArray {
         return get(i) == get(j);
     }
 
+    public boolean isSmallerOrEqual(int i, int j) {
+        for (ISortListener listener : listeners)
+            listener.onValuesCompared(array[i], array[j]);
+        return get(i) <= get(j);
+    }
+
+    @Override
+    public boolean isBiggerOrEqual(int i, int j) {
+        for (ISortListener listener : listeners)
+            listener.onValuesCompared(array[i], array[j]);
+        return get(i) >= get(j);
+    }
+
     public boolean isSorted() {
         for (int i = 0; i < length() - 1; i++)
             if (isBigger(i, i + 1))
                 return false;
             return true;
+    }
+
+    @Override
+    public int getMax() {
+        int max = array[0];
+        for (int value : array)
+            if (value > max)
+                max = value;
+            return max;
     }
 
     public void addListeners(ISortListener listener) {

@@ -1,4 +1,6 @@
-package model;
+package model.sort;
+
+import model.array.IArray;
 
 public class MergeSort implements ISortingAlgorithm {
 

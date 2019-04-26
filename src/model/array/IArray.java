@@ -1,4 +1,6 @@
-package model;
+package model.array;
+
+import model.ISortListener;
 
 public interface IArray {
 
@@ -10,6 +12,9 @@ public interface IArray {
     boolean isSmaller(int i, int j);
     boolean isBigger(int i, int j);
     boolean isEqual(int i, int j);
+    boolean isSmallerOrEqual(int i, int j);
+    boolean isBiggerOrEqual(int i, int j);
     boolean isSorted();
+    int getMax();
     void addListeners(ISortListener listener);
 }
